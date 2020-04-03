@@ -4,8 +4,21 @@
   "description": "Clean Architecture Api",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha './**/*.spec.js' --exit",
+    "start": "node ./drivers/webserver/server.js",
+    "dev": "nodemon ./drivers/webserver/server.js"
   },
   "author": "Consuelo Sanna",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "joi": "^14.3.1",
+    "mongoose": "^5.9.7"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^7.1.1",
+    "nodemon": "^2.0.2"
+  }
 }

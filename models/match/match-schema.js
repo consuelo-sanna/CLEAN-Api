@@ -1,4 +1,4 @@
-let Joi = require("joi");
+const Joi = require("joi");
 
 module.exports = Joi.object().keys({
   creator: Joi.string()

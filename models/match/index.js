@@ -1,8 +1,8 @@
-let buildMakeMatch = require("./match");
-let matchSchema = require("./match-schema");
+const buildMakeMatch = require("./match");
+const matchSchema = require("./match-schema");
 // let {matchValidator} = require('../../validator')
-let matchValidator = require("../validator/")(matchSchema);
+const matchValidator = require("../validator/")(matchSchema);
 
-let makeMatch = buildMakeMatch(matchValidator);
+const makeMatch = buildMakeMatch(matchValidator);
 
 module.exports = makeMatch;

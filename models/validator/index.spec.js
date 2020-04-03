@@ -1,13 +1,13 @@
-let chai = require("chai");
-let expect = chai.expect;
-let validator = require("./index");
-let matchSchema = require("../match/match-schema");
-let matchValidator = validator(matchSchema);
+const chai = require("chai");
+const expect = chai.expect;
+const validator = require("./index");
+const matchSchema = require("../match/match-schema");
+const matchValidator = validator(matchSchema);
 
 describe("validators", () => {
   describe("matchValidator", () => {
     it("validates the match property (creatore, dates ecc)", () => {
-      let validPayload = {
+      const validPayload = {
         creator: "consu",
         dateCreation: Date.now(),
         dateMatch: Date.now(),
@@ -17,20 +17,20 @@ describe("validators", () => {
         winner: "red",
         idMatch: "stringa1123casuale22"
       };
-      let input = matchValidator(validPayload);
-      let actual = true;
+      const input = matchValidator(validPayload);
+      const actual = true;
       expect(input).to.equal(actual);
     });
 
     it("returns error messages if invalid", () => {
-      let invalidPayload = {
+      const invalidPayload = {
         creator: "consu",
         secret: "boom"
       };
-      let input = matchValidator(invalidPayload);
-      let errorMessage = ['"secret" is not allowed'].join("\n");
+      const input = matchValidator(invalidPayload);
+      const errorMessage = ['"secret" is not allowed'].join("\n");
 
-      let actual = {
+      const actual = {
         error: errorMessage
       };
 

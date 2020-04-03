@@ -1,10 +1,9 @@
-let Joi = require("joi");
+const Joi = require("joi");
 
-let validator = schema => payload => {
-  let { error } = Joi.validate(payload, schema, { abortEarly: false });
+const validator = schema => payload => {
+  const { error } = Joi.validate(payload, schema, { abortEarly: false });
   if (error) {
-    let message = error.details.map(el => el.message).join("\n");
-    console.log("errore test:", message);
+    const message = error.details.map(el => el.message).join("\n");
     return {
       error: message
     };

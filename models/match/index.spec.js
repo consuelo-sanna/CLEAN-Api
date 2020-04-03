@@ -1,11 +1,11 @@
-let chai = require("chai");
-let expect = chai.expect;
-let makeMatch = require("./index");
+const chai = require("chai");
+const expect = chai.expect;
+const makeMatch = require("./index");
 const { assert } = require("chai");
 
 describe("makeMatch", () => {
   it("throws error if invalid payload", () => {
-    let errorMessage = ["must have creator as string"].join("\n");
+    const errorMessage = ["must have creator as string"].join("\n");
 
     expect(() => {
       makeMatch({
@@ -21,34 +21,41 @@ describe("makeMatch", () => {
   });
 
   it("must have creator", () => {
-    let match = makeMatch({
+    const match = makeMatch({
       creator: "consu"
     });
-    let input = match.getCreator();
-    let actual = "consu";
+    const input = match.getCreator();
+    const actual = "consu";
     expect(input).to.equal(actual);
   });
   it("can have team1", () => {
-    let match = makeMatch({ creator: "consu", team1: "red" });
-    let input = match.getTeam1();
-    let actual = "red";
+    const match = makeMatch({ creator: "consu", team1: "red" });
+    const input = match.getTeam1();
+    const actual = "red";
     expect(input).to.equal(actual);
   });
   it("can have team2", () => {
-    let match = makeMatch({ creator: "consu", team2: "blue" });
-    let input = match.getTeam2();
-    let actual = "blue";
+    const match = makeMatch({ creator: "consu", team2: "blue" });
+    const input = match.getTeam2();
+    const actual = "blue";
     expect(input).to.equal(actual);
   });
   it("can have winner", () => {
-    let match = makeMatch({ creator: "consu", winner: "red" });
-    let input = match.getWinner();
-    let actual = "red";
+    const match = makeMatch({ creator: "consu", winner: "red" });
+    const input = match.getWinner();
+    const actual = "red";
     expect(input).to.equal(actual);
   });
   it("sets dateCreation by default ", () => {
-    let match = makeMatch({ creator: "consu" });
-    let dateCreationeReceived = match.getDateCreation();
+    const match = makeMatch({ creator: "consu" });
+    const dateCreationeReceived = match.getDateCreation();
     assert.isNotNull(dateCreationeReceived);
+  });
+  it("sets winner with setWinner method ", () => {
+    const match = makeMatch({ creator: "consu" });
+    const winnerToSet = "red";
+    match.setWinner(winnerToSet);
+    const winnerValue = match.getWinner();
+    expect(winnerValue).to.equal(winnerToSet);
   });
 });
